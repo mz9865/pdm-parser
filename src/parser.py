@@ -7,5 +7,5 @@ with open("data.csv") as data:
             tokens[i] = tokens[i].strip("\"")
 
 
-    
+
 
