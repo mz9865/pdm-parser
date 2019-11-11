@@ -15,11 +15,12 @@ with codecs.open("data.txt", "r", encoding="utf-8", errors="ignore") as data:
                 token.strip("\r\n")
         all_rows.append(splittedLine)
 
-# Strip empty spaces in the tokens
+# Strip leading and trailing empty spaces in the tokens
 for i in range(len(all_rows)):
     for j in range(len(all_rows[i])):
-        if all_rows[i][j][0] == " ":
-            all_rows[i][j] = all_rows[i][j].strip(" ")
+        if all_rows[i][j][0] == " " or all_rows[i][j][len(all_rows[i][j]) - 1]:
+            all_rows[i][j] = all_rows[i][j].lstrip()
+            all_rows[i][j] = all_rows[i][j].rstrip()
 
 # Join the two numbers for the question key
 for i in range(len(all_rows)):
@@ -42,6 +43,7 @@ del newRowsList[0][-1]
 for row in newRowsList:
     if '\r\n' in row[189]:
         row[189] = row[189].replace('\r\n', '')
+
 
 # Write to CSV file
 with open("output.csv", "w") as output:
