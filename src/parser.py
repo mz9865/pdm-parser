@@ -39,11 +39,14 @@ for row in all_rows:
     newRowsList.append(newRow)
 
 # Remove the \r\n in the last token of the row
-del newRowsList[0][-1]
-for row in newRowsList:
-    if '\r\n' in row[189]:
-        row[189] = row[189].replace('\r\n', '')
+# del newRowsList[0][-1]
+# for row in newRowsList:
+#     if '\r\n' in row[189]:
+#         row[189] = row[189].replace('\r\n', '')
 
+
+for row in newRowsList:
+    print(row)
 
 # Write to CSV file
 with open("output.csv", "w") as output:
